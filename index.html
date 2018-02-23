@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Future home of aStewartDesign!</title>
+	</head>
+	<body>
+		<h1>Future home of aStewartDesign!</h1>
+		<p>delphisstudio.com git deploy</p>
+		<img src="/smile.gif" alt="Smile!" />
+		<p>Hey there <span id ="name">stranger</span>!</p>
+		<button id="btn">Get Some!</button>
+	</body>
+
+	<script>
+		(() => {
+			const elBtn = document.getElementById('btn');
+			const elName = document.getElementById('name');
+			const doTheThing = () => {
+				const req = new XMLHttpRequest();
+				req.onreadystatechange = () => {
+					if (req.readyState === 4 && req.status === 200) {
+						elName.innerHTML = req.responseText;
+					}
+				};
+				req.open('GET', 'https://ei1jbujxrd.execute-api.us-west-2.amazonaws.com/prod/myFirstLambda', true);
+				req.send();
+			};
+			elBtn.addEventListener('click', doTheThing);
+		})();
+	</script>
+</html>
